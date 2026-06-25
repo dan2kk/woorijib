@@ -96,23 +96,23 @@
   .nv-pop b{font-size:13px;color:#fff}
   /* ===== 모바일 반응형 ===== */
   @media (max-width:768px){
+    /* 페이지 전체가 자연스럽게 스크롤되도록: 고정높이 해제, body 스크롤 */
+    html,body{height:auto;overflow-y:auto;-webkit-overflow-scrolling:touch}
+    #app{height:auto;display:block}
     header{padding:10px 12px}
     header h1{font-size:13px;line-height:1.35}
     header p{font-size:10px}
-    .tabs{padding:6px 10px 0} .tab{padding:8px 12px;font-size:12.5px}
+    .tabs{padding:6px 10px 0;position:sticky;top:0;z-index:15;background:var(--panel)} .tab{padding:8px 12px;font-size:12.5px}
     .filters{padding:8px 10px;gap:6px;font-size:11px}
     .fbtn,.fsel,.fsearch{padding:6px 9px;font-size:12px}
     .fsearch{width:100px}
     .fcount{width:100%;margin-left:0;order:99;text-align:right}
-    .wrap{flex-direction:column}
-    #map{flex:none;width:100%;height:42vh;min-height:240px}
-    .side{width:100%;max-width:none;min-width:0;border-left:none;border-top:1px solid var(--line);
-      flex:1;padding:10px 12px 80px}
+    .wrap{display:block}
+    #map{display:block;width:100%;height:55vh;min-height:300px}
+    .side{display:block;width:100%;max-width:none;min-width:0;border-left:none;border-top:1px solid var(--line);
+      height:auto;overflow:visible;padding:10px 12px 100px}
     .gate .box,#gate .box{width:88vw;max-width:340px}
     table{font-size:12px} th,td{padding:6px 7px}
-  }
-  @media (max-width:768px) and (orientation:landscape){
-    #map{height:60vh}
   }
 </style>
 </head>
