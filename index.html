@@ -133,7 +133,7 @@
     <div class="fgroup" style="margin-right:6px">
       <button class="fbtn on" id="modeSale" data-mode="sale">매매</button>
       <button class="fbtn" id="modeJeonse" data-mode="jeonse">전세</button></div>
-    <div class="fgroup"><button class="fbtn" data-f="solo">나홀로 (2동↓)</button>
+    <div class="fgroup"><button class="fbtn" data-f="solo">나홀로 제외</button>
       <button class="fbtn" id="ffav">★ 즐겨찾기</button></div>
     <div class="fgroup"><span class="flabel">평형</span>
       <button class="fbtn" data-py="0">~19평</button>
@@ -287,7 +287,7 @@ function applyFilter(){
   if(!curDong)return; let vis=0;
   const q=FILT.search.trim().toLowerCase();
   curDong.complexes.forEach(c=>{
-    const pass=(!FILT.solo||c.solo)&&(!FILT.fav||FAVS.has(c.seq))&&pyPass(c)&&pricePass(c)&&yearPass(c)&&(!q||c.name.toLowerCase().includes(q));
+    const pass=(!FILT.solo||!c.solo)&&(!FILT.fav||FAVS.has(c.seq))&&pyPass(c)&&pricePass(c)&&yearPass(c)&&(!q||c.name.toLowerCase().includes(q));
     if(cards[c.seq])cards[c.seq].classList.toggle('hidden',!pass);
     if(window.showMarker)window.showMarker(c.seq,pass);
     if(pass)vis++;
