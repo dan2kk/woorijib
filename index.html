@@ -250,13 +250,14 @@ function renderSide(d){
   // 동 요약 통계 (모드 반영)
   const pr=d.complexes.map(gRecent).filter(v=>v!=null);
   const lbl=MODE==='sale'?'매매':'전세';
+  const tline=d.transitMin?`🚇 하늘마을2단지서 약 <b>${d.transitMin}분</b>(${d.transitTier===0?'경의중앙·3호선 직통':'버스+1환승'}) · `:'';
   const eok=v=>(v/10000).toFixed(1)+'억';
   if(pr.length){
     const avg=Math.round(pr.reduce((a,b)=>a+b,0)/pr.length);
     side.insertAdjacentHTML('beforeend',
-      `<div class="summary">${d.name} · ${d.complexes.length}단지 (${lbl} ${pr.length}) · 평균 <b>${eok(avg)}</b> · 범위 ${eok(Math.min(...pr))}~${eok(Math.max(...pr))}</div>`);
+      `<div class="summary">${tline}${d.name} · ${d.complexes.length}단지 (${lbl} ${pr.length}) · 평균 <b>${eok(avg)}</b> · 범위 ${eok(Math.min(...pr))}~${eok(Math.max(...pr))}</div>`);
   }else{
-    side.insertAdjacentHTML('beforeend',`<div class="summary">${d.name} · ${d.complexes.length}단지 · ${lbl} 데이터 없음</div>`);
+    side.insertAdjacentHTML('beforeend',`<div class="summary">${tline}${d.name} · ${d.complexes.length}단지 · ${lbl} 데이터 없음</div>`);
   }
   cards={};
   d.complexes.forEach((c,i)=>{
